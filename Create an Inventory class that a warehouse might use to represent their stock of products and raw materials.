@@ -1,0 +1,90 @@
+/*
+Create an Inventory class that a warehouse might use to represent their stock of products and raw
+materials.
+Include a data member of type string to provide a description of the product,
+and data member of type int to represent the balance stock. Provide a
+constructor that receives an initial product and uses it to initialize the data
+members. The constructor should validate the initial product to ensure it has a
+stock greater than 20, which is the company’s minimum stock level. If not, it
+should display an error message.
+Provide three member functions. Member function
+Purchase should add a product to the current stock. Member function Sale should
+reduce stock. Ensure after each sale that the stock level does not drop below
+20. Member function getStock should return the current stock. Create a program
+that creates two Inventory objects and tests the member functions of the class.
+*/
+
+#include<iostream>
+using namespace std;
+
+class Inventory{
+	string descrip;
+	int stock;
+
+public: 
+
+	Inventory(string a, int b){
+		descrip=a;
+		if (b<20){
+			cout<<"\n----------ALERT----------"
+			"\nThe stock is less than 20."<<cout;
+		}
+		else
+		stock=b;
+	}
+	
+	string get_descrip(){
+		return descrip;
+	}
+	
+	int sale(int x){
+		if (stock-x<20){
+			cout<<"\n\t\t----------ALERT----------";
+			cout<<"\n\t\tThe stock is less than 20.\n\n";
+			return stock-x;
+		}
+		else
+			stock=stock-x;
+		return stock;
+	}
+	
+	int purchase(int y){
+		stock=stock+y;
+		return stock;
+	}
+	
+	int getstock(){
+		return stock;
+	}
+	
+};
+
+int main(){
+	int purch,sales;
+	Inventory obj1("Eggs", 20);
+	Inventory obj2("Bread", 20);
+	
+	cout<<"\n\t\t\tItem: "<<obj1.get_descrip();
+	cout<<"\n\t\t\t----------\n\n";
+	cout<<"\t\tCurrent stock for "<<obj1.get_descrip()<<" is "<<obj1.getstock()<<endl;
+	cout<<"\n\t\tEnter purchase for "<<obj1.get_descrip()<<" : ";
+	cin>>purch;
+	cout<<"\t\tThe total stock after purchases is "<<obj1.purchase(purch)<<endl;
+	cout<<"\n\t\tEnter sales for "<<obj1.get_descrip()<<" : ";
+	cin>>sales;
+	cout<<"\t\tThe total stock after sales is "<<obj1.sale(sales);
+	
+	
+	cout<<"\n\n\n\t\t\tItem: "<<obj2.get_descrip();
+	cout<<"\n\t\t\t-----------\n\n";
+	int purch_2,sales_2;
+	cout<<"\t\tCurrent stock for "<<obj2.get_descrip()<< " is "<<obj2.getstock();
+	cout<<"\n\n\t\tEnter purchase for " <<obj2.get_descrip()<< " : ";
+	cin>>purch_2;
+	cout<<"\t\tThe total stock after purchases is "<<obj2.purchase(purch_2)<<endl;
+	cout<<"\n\t\tEnter sales for " <<obj2.get_descrip()<< " : ";
+	cin>>sales_2;
+	cout<<"\t\tThe total stock after sales is "<<obj2.sale(sales_2);
+	cout<<"\n\n\t\t\tEnd of List\n\n\n";
+	return 0;
+}
