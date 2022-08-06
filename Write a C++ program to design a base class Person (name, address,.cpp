@@ -1,7 +1,5 @@
 /*
-Write a C++ program to design a base class Person (name, address,
-phone_no). Derive a class Employee (eno, ename) from Person. Derive a class Manager
-(designation, department name, and basic-salary) from Employee. Write a menu driven
+Write a C++ program to design a base class Person (name, address, phone_no). Derive a class Employee (eno, ename) from Person. Derive a class Manager (designation, department name, and basic-salary) from Employee. Write a menu driven
 program to:
 Accept all details of 'n' managers.
 Display manager having highest salary.
